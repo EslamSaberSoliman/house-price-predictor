@@ -157,7 +157,7 @@ jobs:
           done 
           docker logs test-api
           # Build streamlit image
-          docker build -t docker.io/${{ vars.DOCKERHUB_USERNAME }}/streamlint:$COMMIT_HASH -f streamlit_app/Dockerfile .
+          docker build -t docker.io/${{ vars.DOCKERHUB_USERNAME }}/streamlit:$COMMIT_HASH -f streamlit_app/Dockerfile .
 
       - name: Clean up Test Container
         run: |
@@ -179,6 +179,6 @@ jobs:
           docker push docker.io/${{ vars.DOCKERHUB_USERNAME }}/house-price-model:latest
 
           # push stramlit image
-          docker tag docker.io/${{ vars.DOCKERHUB_USERNAME }}/streamlint:$COMMIT_HASH docker.io/${{ vars.DOCKERHUB_USERNAME }}/streamlint:latest
-          docker push docker.io/${{ vars.DOCKERHUB_USERNAME }}/streamlint:$COMMIT_HASH
-          docker push docker.io/${{ vars.DOCKERHUB_USERNAME }}/streamlint:latest
+          docker tag docker.io/${{ vars.DOCKERHUB_USERNAME }}/streamlit:$COMMIT_HASH docker.io/${{ vars.DOCKERHUB_USERNAME }}/streamlit:latest
+          docker push docker.io/${{ vars.DOCKERHUB_USERNAME }}/streamlit:$COMMIT_HASH
+          docker push docker.io/${{ vars.DOCKERHUB_USERNAME }}/streamlit:latest
