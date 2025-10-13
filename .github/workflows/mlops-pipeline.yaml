@@ -156,6 +156,8 @@ jobs:
              curl -f http://localhost:8000/health && break || sleep 5;
           done 
           docker logs test-api
+          # Build streamlit image
+          docker build -t docker.io/${{ vars.DOCKERHUB_USERNAME }}/streamlint:$COMMIT_HASH -f src/streamlit_app/Dockerfile .
 
       - name: Clean up Test Container
         run: |
@@ -175,3 +177,8 @@ jobs:
           docker tag docker.io/${{ vars.DOCKERHUB_USERNAME }}/house-price-model:$COMMIT_HASH docker.io/${{ vars.DOCKERHUB_USERNAME }}/house-price-model:latest
           docker push docker.io/${{ vars.DOCKERHUB_USERNAME }}/house-price-model:$COMMIT_HASH
           docker push docker.io/${{ vars.DOCKERHUB_USERNAME }}/house-price-model:latest
+
+          # push stramlit image
+          docker tag docker.io/${{ vars.DOCKERHUB_USERNAME }}/streamlint:$COMMIT_HASH docker.io/${{ vars.DOCKERHUB_USERNAME }}/streamlint:latest
+          docker push docker.io/${{ vars.DOCKERHUB_USERNAME }}/streamlint:$COMMIT_HASH
+          docker push docker.io/${{ vars.DOCKERHUB_USERNAME }}/streamlint:latest
