@@ -4,3 +4,9 @@ backgroundColor = "#F5F5F5"  # Set the background color
 secondaryBackgroundColor = "#FFFFFF"  # Set the sidebar background color
 textColor = "#333333"  # Set the text color
 font = "sans serif"  # Choose a font (e.g., "sans serif", "serif", "monospace")
+
+[browser]
+gatherUsageStats = false
+
+[server]
+fileWatcherType = "none"
