@@ -157,7 +157,7 @@ jobs:
           done 
           docker logs test-api
           # Build streamlit image
-          docker build -t docker.io/${{ vars.DOCKERHUB_USERNAME }}/streamlint:$COMMIT_HASH -f src/streamlit_app/Dockerfile .
+          docker build -t docker.io/${{ vars.DOCKERHUB_USERNAME }}/streamlint:$COMMIT_HASH -f streamlit_app/Dockerfile .
 
       - name: Clean up Test Container
         run: |
