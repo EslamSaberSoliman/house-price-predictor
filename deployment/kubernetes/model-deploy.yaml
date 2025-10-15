@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: model
+  name: model
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: model
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: model
+    spec:
+      containers:
+        - image: eslamzaineldeen/house-price-model:latest
+          name: house-price-model
+          ports:
+            - containerPort: 8000
+          resources:
+            requests:
+              cpu: "50m" # 100 milliCPU
+              memory: "64Mi" # 128 MiB of memory
+            limits:
+              cpu: "100m" # 500 milliCPU
+              memory: "128Mi" # 512 MiB of memory
+status: {}
